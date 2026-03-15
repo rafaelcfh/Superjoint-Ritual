@@ -3,7 +3,7 @@
     --text-dim: #666; --border: #151515; --water: rgba(201, 162, 39, 0.15);
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
-body { background: var(--bg); color: var(--white); font-family: -apple-system, system-ui, sans-serif; margin: 0; height: 100dvh; overflow: hidden; padding-top: env(safe-area-inset-top); }
+body { background: var(--bg); color: var(--white); font-family: -apple-system, sans-serif; margin: 0; height: 100dvh; overflow: hidden; padding-top: env(safe-area-inset-top); }
 
 #app-wrapper { width: 100%; max-width: 480px; height: 100dvh; display: flex; flex-direction: column; margin: 0 auto; position: relative; }
 #screen { flex: 1; overflow-y: auto; padding-bottom: 100px; }
@@ -14,36 +14,43 @@ body { background: var(--bg); color: var(--white); font-family: -apple-system, s
 .nav-item svg { width: 22px; height: 22px; }
 
 .timer-container { position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background: #000; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px 0; }
-.timer-circle { position: relative; width: 280px; height: 280px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #111; background: radial-gradient(circle, #080808 0%, #000 100%); }
-.liquid-fill { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: var(--water); transition: height 0.6s ease; }
+.timer-circle { position: relative; width: 280px; height: 280px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #111; background: radial-gradient(circle, #080808 0%, #000 100%); flex-direction: column; }
+.liquid-fill { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: var(--water); transition: height 0.6s ease; z-index: 1; }
+
 .status-container { position: absolute; top: 45px; width: 100%; display: flex; justify-content: center; z-index: 10; }
 .status-badge { background: var(--gold); color: #000; font-size: 0.6rem; font-weight: 900; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; }
 .status-wait { background: #111; color: var(--gold); border: 1px solid var(--gold); }
 
 #vGrams { font-size: 5rem; font-weight: 800; z-index: 5; letter-spacing: -3px; line-height: 1; margin-top: 20px; }
 #vGrams small { font-size: 0.25em; opacity: 0.4; }
-#vTime { font-size: 1.4rem; color: var(--white); z-index: 5; font-family: monospace; font-weight: 700; margin-top: 5px; }
+#vTime { font-size: 1.4rem; color: var(--white); z-index: 5; font-family: monospace; font-weight: 700; }
 .target-ref { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; z-index: 5; margin-top: 4px; }
 
 .step-dashboard { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); width: 100%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .step-info-box { background: var(--bg); padding: 15px 5px; display: flex; flex-direction: column; align-items: center; }
-.step-info-box .lbl { font-size: 0.55rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 4px; }
+.step-info-box .lbl { font-size: 0.55rem; color: var(--text-dim); text-transform: uppercase; }
 .step-info-box .val { font-family: monospace; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
 
 .next-up { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 800; margin-top: 12px; letter-spacing: 1px; }
 
 .sensory-scale { display: flex; justify-content: center; gap: 12px; margin: 20px 0; }
 .circle-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--border); background: transparent; cursor: pointer; }
-.circle-btn.active { transform: scale(1.2); border-width: 3px; }
+.circle-btn.active { transform: scale(1.3); border-width: 3px; }
 .circle-btn.c-2 { border-color: #3498db; } .circle-btn.c-2.active { background: #3498db; }
+.circle-btn.c-1 { border-color: #5dade2; } .circle-btn.c-1.active { background: #5dade2; }
 .circle-btn.c0  { border-color: var(--gold); } .circle-btn.c0.active  { background: var(--gold); }
-.circle-btn.c2  { border-color: #e74c3c; } .circle-btn.c2.active { background: #e74c3c; }
+.circle-btn.c1  { border-color: #eb984e; } .circle-btn.c1.active  { background: #eb984e; }
+.circle-btn.c2  { border-color: #e74c3c; } .circle-btn.c2.active  { background: #e74c3c; }
+
+.fresh-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: #000; }
+.f-blue { background: #3498db; color: #fff; }
+.f-gold { background: var(--gold); color: #000; }
+.f-white { background: #eee; color: #000; }
+.f-dim { background: #333; color: #999; }
 
 .btn-main-capsule { width: 180px; height: 55px; border-radius: 30px; border: none; background: var(--gold); color: #000; font-size: 0.85rem; text-transform: uppercase; font-weight: 800; cursor: pointer; }
-.btn-secondary-text { background: none; border: none; color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; cursor: pointer; padding: 10px; }
+.btn-secondary-text { background: none; border: none; color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; padding: 10px; cursor: pointer; }
 
 .card { background: var(--card); border: 1px solid var(--border); padding: 20px; margin: 10px 15px; border-radius: 16px; }
-.label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; font-weight: 800; margin-bottom: 5px; display: block; }
-input, select, textarea { width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--border); color: #fff; padding: 10px 0; font-size: 16px; font-weight: 600; margin-bottom: 15px; }
-input:focus { border-bottom-color: var(--gold); }
-.preview-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #0a0a0a; font-size: 0.75rem; }
+.label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 5px; }
+input, select, textarea { width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--border); color: #fff; padding: 10px 0; font-size: 16px; margin-bottom: 15px; }
