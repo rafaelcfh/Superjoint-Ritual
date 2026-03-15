@@ -1,4 +1,4 @@
-const CACHE = 'brewflow-v4';
+const CACHE = 'brewflow-v1';
 const ASSETS = ['index.html', 'style.css', 'app.js', 'recipes.js', 'manifest.json'];
 
 self.addEventListener('install', e => {
