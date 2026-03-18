@@ -1,4 +1,4 @@
-const CACHE = 'brewflow-v1';
+const CACHE = 'ritual-v5'; // Mudei para v5 para forçar atualização
 const ASSETS = ['index.html', 'style.css', 'app.js', 'recipes.js', 'manifest.json'];
 
 self.addEventListener('install', e => {
@@ -6,7 +6,9 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))));
+  e.waitUntil(caches.keys().then(keys => Promise.all(
+    keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+  )));
 });
 
 self.addEventListener('fetch', e => {
